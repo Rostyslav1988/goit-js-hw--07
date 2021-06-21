@@ -1,18 +1,25 @@
 "use strict"
 
 const ingredients = [
-    'Картошка',
-    'Грибы',
-    'Чеснок',
-    'Помидоры',
-    'Зелень',
-    'Приправы',
-  ];
+  'Картошка',
+  'Грибы',
+  'Чеснок',
+  'Помидоры',
+  'Зелень',
+  'Приправы',
+];
+
+const listForAddingItems = document.querySelector(`#ingredients`);
 
 
-  const ulElement = document.querySelector('#ingredients');
 
-  const listIngredients = ingredients.reduce((str, item) => str + `<li>${item}</li>`, '');
-  ulElement.innerHTML = listIngredients;
+const addListItems = (array) => {
+  const listArray = array.map(item => {
+      const listItem = document.createElement('li');
+      listItem.textContent = item;
+      return listItem;
+  })
+  listForAddingItems.append(...listArray);
+}
 
-  console.log(listIngredients)
+addListItems(ingredients);
